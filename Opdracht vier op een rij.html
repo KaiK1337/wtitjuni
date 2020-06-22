@@ -1,0 +1,169 @@
+<html> 
+<head> 
+<style> 
+
+	table, td {
+		border: 1px solid #000;
+		border-collapse: collapse;
+	}
+
+	table {
+    //border-spacing: 0;
+    border-collapse: collapse;
+    overflow: hidden;
+    z-index: 1;
+	}
+
+	td, th {
+		width: 40px;
+		height: 40px;
+	    cursor: pointer;
+	    //padding: 10px;
+	    position: relative;
+	}
+
+	td:hover::after { 
+	    background-color: #ffa;
+	    content: '\00a0';  
+	    height: 10000px;    
+	    left: 0;
+	    position: absolute;  
+	    top: -5000px;
+	    width: 100%;
+	    z-index: -1;        
+	}
+</style>
+<script> 
+	function tableCreate() {
+		var body = document.getElementsByTagName('body')[0];
+		var tbl = document.createElement('table');
+		tbl.setAttribute('id', 'myTable')
+		var tbdy = document.createElement('tbody');
+		for (var i = 0; i < 6; i++) {
+	    	var tr = document.createElement('tr');
+	    	for (var j = 0; j < 7; j++) {
+	        	if (i == 5 && j == 7) {
+	        		break
+	      		} else {
+			        var td = document.createElement('td');
+			        tr.appendChild(td);
+			        td.setAttribute("id", ""+i+j);
+			    }
+	    	}
+	    	tbdy.appendChild(tr);
+	  	}
+	    tbl.appendChild(tbdy);
+	    body.appendChild(tbl);
+
+	    if (tbl != null) {
+        	for (var i = 0; i < tbl.rows.length; i++) {
+            	for (var j = 0; j < tbl.rows[i].cells.length; j++) {
+                	tbl.rows[i].cells[j].onclick = function () { place(this); };
+            	}
+            }
+        }
+	}
+	function place(cel) {
+		for (var i=5; i>=0; i-=1){
+			if (document.getElementById("" + i + cel.id[1]).style.backgroundColor==''){
+				var col = Color()
+				document.getElementById("" + i + cel.id[1]).style.backgroundColor = col;
+				if (col=='green'){
+					boardArray[i][cel.id[1]] = 1
+				} else {
+					boardArray[i][cel.id[1]] = 2
+				}
+				CheckWin(boardArray, i, cel.id[1], col)
+				break;
+			} else if (i==0){
+				alert('This row is already full.');
+			}
+		}	    
+    }
+ 
+    var boardArray = new Array(6);
+	for (var i = 0; i < boardArray.length; i++) {
+	  boardArray[i] = new Array(7).fill(0);
+	}
+
+    var k = 0;
+    function Color(){
+    	var c
+    	if (k%2==0){
+			c = 'green';
+		}
+		else {
+			c = 'red';
+		}
+		k+=1; 
+		return c
+    }
+
+    function CheckWin(arr, i , j , color) { 
+    	if (Horizontal(arr, i) || Vertical(arr, j) || Diagonal(arr)) {
+    		alert(color + " wins the game. Good Game Well Played! \n Refresh the page to play again."); 
+    		return true;
+    	} else {
+    		return false; 
+    	}
+    }
+
+	function Horizontal(arr, i) {
+    	var last = null;
+	    var count = 0;
+	    for (var j = 0; j < arr[i].length; j+=1) {
+	        if (arr[i][j] != last) {
+	            last = arr[i][j];
+	            count = 0;
+	        }
+	        count += 1;
+	        if (4 <= count && last!=0) {
+	            return true;
+	        }
+	    }
+	    return false;	    	
+    }
+
+    function Vertical(arr, j){ 
+    	var last = null;
+	    var count = 0;
+	    for (var i = arr.length-1; i >= 0; i-=1) {
+	        if (arr[i][j] != last) {
+	            last = arr[i][j];
+	            count = 0;
+	        }
+	        count += 1;
+	        if (4 <= count && last!=0) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+
+	function Diagonal(arr) {
+		for (var i=0; i<3; i+=1){ 
+			for (var j=0; j<4; j+=1){ 
+				if (diagonal4x4(arr, i, j)) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	function diagonal4x4(arr, i, j) {
+		if (arr[i][j] == arr[i+1][j+1] && arr[i][j]== arr[i+2][j+2] && arr[i][j] == arr[i+3][j+3] && arr[i][j]!=0) {
+			return true; 
+		} else if (arr[i+3][j] == arr[i+2][j+1] && arr[i+3][j] == arr[i+1][j+2] && arr[i+3][j]== arr[i][j+3] && arr[i+3][j]!=0) {
+			return true; 
+		} else {
+			return false;
+		}
+	}
+</script>
+</head>
+<body> 
+	<input type="button" onclick= tableCreate() value="Create PLayingfield ">
+	<br><br><br>
+</body>
+

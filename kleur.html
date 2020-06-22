@@ -1,0 +1,71 @@
+<html>
+<head> 
+<style>
+	b{
+		background-color : red;
+		font-size: 21px;
+	}
+	td{
+		border: 2px solid blue;
+   		width: 30px;
+		height:30px;
+	}
+</style> 
+<script> 
+	var i = 0; 
+	function kleur(){
+		if (i%2==0){
+			console.log("Kleur is groen.");
+		}
+		else {
+			console.log("kleur is rood.");
+		}
+		i+=1; 
+	}		
+
+
+	function tel(){
+		var getal = document.getElementById("getal").value;
+		for (var x=0; x<getal; x+=1){
+			console.log(x);
+		}
+	}
+
+
+	var status = [1 2 3]; 
+	function vakjes_kleuren(){
+		console.log(status)
+		console.log(status.length)
+		for(var x=0; x<status.length; x+=1){
+			console.log(x)
+			console.log(status[x])
+			if (status[x]==0){
+				document.getElementById(x).style.backgroundColor = 'red'
+			} 
+			if (status[x]==1){
+				document.getElementById(x).style.backgroundColor = 'green'
+			} 
+			if (status[x]==2){
+				document.getElementById(x).style.backgroundColor = 'yellow'
+			}
+		}
+	}
+
+</script>
+</head> 
+<body>
+	<table>
+		<tr>
+			<td id="0"></td>
+			<td id="1"></td>
+			<td id="2"></td>
+			<td id="3"></td>
+			<td id="4"></td>
+			<td id="5"></td>	
+		</tr>
+	<input type="number" id="getal">
+	<input type="button" onclick=tel() value="Tel">
+	<input type="button" onclick=vakjes_kleuren() value="Kleur Vakjes">
+</body>
+<html> 
+

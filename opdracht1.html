@@ -1,0 +1,103 @@
+<b> Opdracht 1 </b> 
+<html>
+<!-- css -->
+
+<style> 
+	b{
+		background-color : red;
+		font-size: 21px;
+	}
+
+	td {
+		width: 30px;
+		height: 30px;
+	}
+
+	table, td {
+		border: 1px solid blue;
+		border-collapse: collapse;
+	}
+</style>
+
+<!-- javascript -->
+<script>
+	function proberen(){
+		var mijnvar = document.getElementById("denaam").value;
+		document.getElementById("jojo").innerHTML = mijnvar;
+	}
+
+	function vakjeVullen(){
+		var deDOM = document.getElementsByTagName("html");
+		console.log(deDOM);
+		alert(deDOM[0].baseURI);
+	}
+</script>		
+
+
+<body> 
+	Geef uw naam:
+	<input type=text id="denaam" >
+	<input type=button value="Klik maar" onclick=proberen()>
+
+	Welkom: <b  id="jojo" > vul je naam in </b>
+	<br><br><br>
+
+	<table> 
+		<tr>
+			<td id="vakje00" onclick=vakjeVullen()></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>	
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>	
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>	
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>	
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>	
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>	
+		</tr>
+	</table>
+
+</body> 
+
+</html> 

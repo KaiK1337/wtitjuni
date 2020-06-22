@@ -1,0 +1,58 @@
+Has-a relatie
+Is-a relatie
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+
+<!-- css -->
+<style>
+	b{
+		background-color : red;
+		font-size: 21px;
+	}
+	td{
+		border: 2px solid blue;
+   		width: 30px;
+		height:30px;
+	}
+</style>
+<!-- javascript -->
+<script>
+	function proberen(){
+		var mijnvar = document.getElementById("denaam").value;
+		document.getElementById("jojo").innerHTML = mijnvar;
+	}
+	function vakjeVullen(){
+		var deDOM = document.getElementsByTagName("html");
+		console.log(deDOM);
+//		alert(deDOM[0].baseURI);
+//[0].children[1].children[5].children[0].children[0].children[0]
+		var elem = document.getElementById("vakje00");
+		elem.bgColor = 'red';
+		elem.style.border = '5px solid green';
+	}
+</script>
+
+
+
+Geef uw naam:
+<input type=text id="denaam" >
+<input type=button value="Klik maar" onclick=proberen()>
+
+Welkom: <b  id="jojo" > vul je naam in </b>
+
+<table>
+<tr><td id="vakje00" onclick="vakjeVullen()"></td><td id="vakje01"></td></tr>
+<tr><td id="vakje10"></td><td id="vakje11"></td></tr>
+</table>
+</html>
